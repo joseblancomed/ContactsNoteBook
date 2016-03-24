@@ -1,0 +1,49 @@
+#viewTable{
+	
+	width: 97%;
+	height: 17em;
+	overflow-y: hidden;
+}
+
+body fieldset
+{
+	float: left;
+	overflow: auto;
+	height: 300px;
+	width: 47.5%;
+}
+
+#access_login,#access_register
+{
+	padding-top: 80px;
+	padding-left: 80px;
+	position: relative;
+	float: left;
+	font-family: "A.C.M.E. Explosive";
+}
+
+#access_register
+{
+	padding-top: 5px;
+	padding-left: 125px;
+}
+
+#iButton
+{
+	border: 0px;
+	background: transparent;
+	font-family: "A.C.M.E. Explosive";
+	float:left;
+}
+
+@font-face 
+{
+
+font-family: "A.C.M.E. Explosive";
+src: url("A.C.M.E. Explosive.eot");
+   src: url("A.C.M.E. Explosive.eot?#amocristalab") format("embedded-opentype"),
+        url("A.C.M.E. Explosive.woff") format("woff"),
+        url("A.C.M.E. Explosive.ttf") format("truetype"),
+        url("A.C.M.E. Explosive.svg#IDdelafuente") format("svg");
+
+}

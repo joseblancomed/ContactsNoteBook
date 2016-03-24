@@ -1,0 +1,29 @@
+#viewTable, #viewUser{
+	
+	width: 97%;
+	height: 10em;
+	overflow-y: hidden;
+}
+
+#viewUser{
+	height: 5em;
+}
+
+#viewUserInfo{
+	float: left;
+	margin-top: 35px;
+	margin-left: 30px;
+}
+
+#bCloseSession
+{
+	margin-left: 30px;
+}
+
+body fieldset
+{
+	float: left;
+	overflow: auto;
+	height: 300px;
+	width: 47.5%;
+}

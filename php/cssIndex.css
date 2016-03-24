@@ -1,0 +1,130 @@
+body
+{
+	overflow: hidden;
+	font-family: "A.C.M.E. Explosive";
+}
+
+#home{
+	#border: 0px solid lime;
+	height: 98%;
+	background-color: orange;	
+	margin: 0px 0px 0px 0px;
+}
+
+#home #balloon
+{
+	margin: 10% 120px 0px 30%;
+	border: 5px solid #FF8C00;
+	width: 400px; 
+	height: 300px;	
+	float: left;
+	border-radius: 60px 60px 60px 0px;
+	animation: presentation 4s;
+	font-family: "A.C.M.E. Explosive";
+}
+
+#home #balloon #C,#home #balloon #N,#home #balloon #B
+{
+	margin-top: 100px ;
+	position: fixed;
+	#border: 5px solid red;
+	width: 50px;
+	font-size: 60px;	
+	text-align: center;
+	border-radius: 60px 60px 60px 0px;
+	float:left;
+	animation: presentationLetters 10s;
+}
+
+#home #balloon #C{margin-left: 100px ; }
+#home #balloon #N{margin-left: 200px ; }
+#home #balloon #B{margin-left: 260px ; }
+
+@keyframes presentation
+{
+	from {
+		width: 0px; 
+		height: 0px;
+	}
+	to{
+		width: 400px; 
+		height: 300px;}
+}
+
+@keyframes presentationLetters
+{
+	from {
+		opacity: 0;
+	}
+	to{
+		opacity:1;
+	}
+}
+
+
+@font-face {
+
+font-family: "A.C.M.E. Explosive";
+src: url("A.C.M.E. Explosive.eot");
+   src: url("A.C.M.E. Explosive.eot?#amocristalab") format("embedded-opentype"),
+        url("A.C.M.E. Explosive.woff") format("woff"),
+        url("A.C.M.E. Explosive.ttf") format("truetype"),
+        url("A.C.M.E. Explosive.svg#IDdelafuente") format("svg");
+
+}
+
+#home #balloon #login,#home #balloon #reg
+{
+	margin-top: 250px ;
+	margin-left: 50px ;
+	font-size: 30px;	
+	text-align: center;
+	border-radius: 60px 60px 60px 0px;
+	position:absolute;
+	float:left;
+	animation: presentationLetters 10s;
+	cursor: grab;
+}
+
+#home #balloon #reg
+{
+	margin-left: 200px ;
+}
+
+@keyframes animationBox
+{
+	from{
+		border: 0px solid black;
+	}
+	to
+	{
+		border: 5px solid black;
+	}
+}
+
+@keyframes make_disapear
+{
+	from 
+	{
+		border: 0px solid black;
+	}
+	to
+	{
+		border: 2px solid black;
+	}
+}
+
+@keyframes make_bigger
+{
+	from{
+		width: 400px; 
+		height: 300px;	
+	}
+	to
+	{
+		width: 600px; 
+		height: 500px;	
+	}
+	
+	
+}
