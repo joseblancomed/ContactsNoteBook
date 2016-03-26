@@ -12,13 +12,13 @@
 
 <!---- JavaScript ----->
 
+<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
-<script type="text/javascript" src="js.js"></script>
 <script type="text/javascript" src="ajax.js"></script>
-<script type="text/javascript" src="events.js"></script>
+
 
 </head>
-<body>
+<body onload="chargePages()">
 
 <?php
 	
@@ -54,8 +54,7 @@
 
 		</fieldset>
 
-		<fieldset id="tableIC"><legend>Table details</legend>
-		<?php $person->printTable($_SESSION['id']); ?>
+		<fieldset id="tableIC" onload="loadDoc()">
 		</fieldset>
 
 		</form>
@@ -71,6 +70,8 @@
 	if (isset($_POST['saveIt']))
 	{
 		$person->addRegister($_POST['iName'], $_POST['iAddress'],$_POST['iNumber'],$_POST['iExtraNum'],$_SESSION['id']);	
+		echo "<script>chargePages()</script>";
+		//
 	}
 	else if (isset($_POST['dContact']))
 	{
@@ -79,10 +80,12 @@
 	else if (isset($_POST['uContact']))
 	{
 		$person->updateRegister($_SESSION['id']);
+		echo "<script>chargePages()</script>";
 	}
 	else if (isset($_POST['deleteOne']))
 	{
 		$person->deleteContact($_POST['chCont'],$_SESSION['id']);
+		echo "<script>chargePages()</script>";
 	}
 	else if (isset($_POST['updateOne']))
 	{
