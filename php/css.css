@@ -9,16 +9,37 @@
 	height: 5em;
 }
 
-#viewUserInfo{
+#viewUserInfo,#viewUserInfoUpdate{
 	float: left;
 	margin-top: 35px;
 	margin-left: 30px;
 }
 
-#bCloseSession
+#bCloseSession, #bUpdateUser, #bBack
 {
 	margin-left: 30px;
+	float: left;
 }
+
+#saveItUpdate, #saveIt, #dContact,#uContact
+{
+	background: transparent;
+	font-family: "A.C.M.E. Explosive";
+	border: 0px;
+}
+
+#userNameInfo,#userEmailInfo, #userPasswordInfo, #userIdInfo{
+		
+	border-left: 0px;	
+	border-top: 0px;	
+	border-right: 0px;	
+	background: transparent;
+	font-family: "A.C.M.E. Explosive";
+	text-align:center;
+	height: 2em;
+}
+
+#userNameInfo{	font-size: 12px;}
 
 body fieldset
 {

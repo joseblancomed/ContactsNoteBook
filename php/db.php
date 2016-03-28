@@ -68,43 +68,11 @@ class dbConnection
 			return false;
 		
 	}
-	
-	function user_logIn($nUser,$nPassword)
-	{
 		
-		$this->connection = mysqli_connect("localhost","root","","contactNoteBook");
-		
-		$confirmAT = strpos($nUser,'@');
-		$confirmDOT = strpos($nUser,'.');
-		
-		if ($confirmAT == true && $confirmDOT== true)
-		{
-			$query_user_login = mysqli_query($this->connection,"select id,nameUser from users where emailUser='".$nUser."' and passwordUser='".$nPassword."' and active=1;");
-			$qUserLogIn = mysqli_num_rows($query_user_login);
-			
-			if($qUserLogIn == 0)
-				return false;
-			else
-				return true;
-		}
-		else
-		{
-			
-			$query_user_login = mysqli_query($this->connection,"select id from users where nameUser='".$nUser."' and passwordUser='".$nPassword."' and active=1;");
-			$qUserLogIn = mysqli_num_rows($query_user_login);
-			
-			if($qUserLogIn == 0)
-				return false;
-			else
-				return true;
-		}
-		
-	}
-	
-	function addRegister($fullName,$fullAddress,$numTele,$otherNum,$sessionUser)
+	function addRegister($fullName,$fullAddress,$numTele,$otherNum=0,$sessionUser)
 	{
 		$this->connection = mysqli_connect("localhost","root","","contactNoteBook");
-		echo "<script language='JavaScript'>alert('".$fullName."');</script>";
+		echo "<script language='JavaScript'>alert('".$otherNum."');</script>";
 		//echo $this->connection;
 		if (($fullName=="") && ($numTele=="" || $fullAddress==""))
 			echo "<script language='JavaScript'>alert('The field telephone or address are mandatory, almost one of them');</script>";
@@ -114,7 +82,7 @@ class dbConnection
 			
 			if (mysqli_num_rows($regExists) == 0 )
 			{
-				$reg = mysqli_query($this->connection, "insert into contactPeople_".$sessionUser." (name, address, telephone) values (\"".$fullName."\",\"".$fullAddress."\",\"".$numTele."\");");
+				$reg = mysqli_query($this->connection, "insert into contactPeople_".$sessionUser." (name, address, telephone,other_number) values (\"".$fullName."\",\"".$fullAddress."\",\"".$numTele."\",\"".$otherNum."\");");
 				if (!($reg))
 					echo "<script language='JavaScript'>alert('Please check the connection\nor check the parameters');</script>";
 				readRegisters();
@@ -235,12 +203,14 @@ class dbConnection
 
 			Add mobile:&nbsp;<input type='checkbox' id='pressIt' checked onClick='change()'/><br/><br/>
 
-			<span id='eNum'>Other number:&nbsp;<input type='text' name='nExtraNum' maxlength='15' /></span>";
+			<span id='eNum'>Other number:&nbsp;<input type='text' name='nExtraNum' maxlength='15' /></span><br/>
+			
+			<input type='submit' value='Update' name='updateOne'/>";
 			//alert(document.getElementById('chooseid').value)\" />";
 		}
 		else
 			echo "<option>The notebook is empty</option></select>";
-		echo "<input type='submit' value='Update' name='updateOne'/></form></fieldset>";
+		echo "</form></fieldset>";
 
 	}
 	
@@ -254,17 +224,61 @@ class dbConnection
 		
 	}
 	
+	/************* USER ***********/
+	
+	
+	function user_logIn($nUser,$nPassword)
+	{
+		
+		$this->connection = mysqli_connect("localhost","root","","contactNoteBook");
+		
+		$confirmAT = strpos($nUser,'@');
+		$confirmDOT = strpos($nUser,'.');
+		
+		if ($confirmAT == true && $confirmDOT== true)
+		{
+			$query_user_login = mysqli_query($this->connection,"select id,nameUser from users where emailUser='".$nUser."' and passwordUser='".$nPassword."' and active=1;");
+			$qUserLogIn = mysqli_num_rows($query_user_login);
+			
+			if($qUserLogIn == 0)
+				return false;
+			else
+				return true;
+		}
+		else
+		{
+			$query_user_login = mysqli_query($this->connection,"select id from users where nameUser='".$nUser."' and passwordUser='".$nPassword."' and active=1;");
+			$qUserLogIn = mysqli_num_rows($query_user_login);
+			
+			if($qUserLogIn == 0)
+				return false;
+			else
+				return true;
+		}
+		
+	}
+	
 	function who_session_is()
 	{
 		echo "<script type=\"text/javascript\" src=\"events.js\"></script><fieldset id='viewUser'>";
 		
 		echo "<div id='viewUserInfo'>";
-		echo "WELCOME: ".$_SESSION['id']."<span id='bCloseSession' onclick=\"close_session();\">Close</span>";
+		echo "<span style=\"float:left;\">WELCOME: ".$_SESSION['id']."</span><div id=\"bUpdateUser\" onclick=\"loadDoc()\">Modify</div><div id='bCloseSession' onclick=\"close_session();\">Close</div>";
 		echo "</div>";
 		
 		echo "</fieldset>";
 	}
+	
+	function who_session_is_update()
+	{
+		echo "<script type='text/javascript' src='events.js'></script><fieldset id='viewUser'>";
 		
+		echo "<div id='viewUserInfoUpdate'>";
+		echo "<span style=\"float:left;\">WELCOME: ".$_SESSION['id']."</span><div id=\"bBack\" onclick=\"loadDoc()\">Back</div><div id='bCloseSession' onclick=\"close_session();\">Close</div>";
+		echo "</div></fieldset>";
+	}
+			
+	
 	function __destruct()
 	{
 	}
